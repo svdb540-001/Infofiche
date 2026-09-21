@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#16245b">
+  <title>Infofiche - Brandweer Zone Kempen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header no-print">
+    <div>
+      <p class="eyebrow">Brandweer Zone Kempen</p>
+      <h1>Infofiche opmaken</h1>
+      <p>Vul de gegevens in. De fiche wordt automatisch bewaard op dit toestel.</p>
+    </div>
+    <div class="header-actions">
+      <button id="clearButton" class="button button-secondary" type="button">Nieuwe fiche</button>
+      <button id="printButton" class="button button-primary" type="button">Afdrukken / PDF</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <form id="infoForm" class="editor no-print" autocomplete="off">
+      <section class="panel">
+        <h2>Algemene gegevens</h2>
+        <div class="field-grid">
+          <label>Naam activiteit<input name="activityName" placeholder="Bijv. Paardenkoers Geel"></label>
+          <label>Aard activiteit<input name="activityType" placeholder="Bijv. sportevenement"></label>
+          <label class="wide">Locatie activiteit<input name="activityLocation" placeholder="Adres en/of terrein"></label>
+          <label>Aanvang<input name="start" type="datetime-local"></label>
+          <label>Einde<input name="end" type="datetime-local"></label>
+          <label class="wide">Aan<input name="to" placeholder="Ontvanger(s) of dienst"></label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Operationele informatie</h2>
+        <label>Locatie<textarea name="location" rows="3" placeholder="Terrein, toegangen, herkenningspunten..."></textarea></label>
+        <label>Aanrijroute<textarea name="route" rows="3" placeholder="Route, afgesloten straten, aanbevolen toegang..."></textarea></label>
+        <label>Contactgegevens<textarea name="contacts" rows="3" placeholder="Naam, functie en telefoonnummer per lijn"></textarea></label>
+        <label>Radiocommunicatie<textarea name="radio" rows="3" placeholder="Gespreksgroep, kanaal, roepnamen..."></textarea></label>
+        <label>PEB bij opschaling externe hulpdiensten <span>(Punt Eerste Bestemming)</span><textarea name="peb" rows="3" placeholder="Adres, coördinaten of herkenningspunt"></textarea></label>
+        <label>Voertuigen ter plaatse<textarea name="vehicles" rows="3" placeholder="Voertuig en opstelplaats per lijn"></textarea></label>
+        <label>Noodplanning<textarea name="emergency" rows="3" placeholder="Afspraken, verantwoordelijke, evacuatieplaats..."></textarea></label>
+      </section>
+
+      <section class="panel">
+        <h2>Documentgegevens</h2>
+        <div class="field-grid">
+          <label>Procedure<input name="procedure" placeholder="Naam procedure"></label>
+          <label>Dossierbeheerder<input name="manager" placeholder="Naam dossierbeheerder"></label>
+          <label>Datum fiche<input name="documentDate" type="date"></label>
+          <label>Referentie<input name="reference" placeholder="Optioneel dossiernummer"></label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <div><h2>Kaarten en foto's</h2><p>Optioneel. Voeg maximaal vier afbeeldingen toe.</p></div>
+          <label class="button button-secondary file-button">Afbeeldingen kiezen<input id="imageInput" type="file" accept="image/*" multiple></label>
+        </div>
+        <div id="imageEditor" class="image-editor"></div>
+      </section>
+    </form>
+
+    <section class="preview-wrap" aria-label="Afdrukvoorbeeld">
+      <div class="preview-label no-print">Afdrukvoorbeeld</div>
+      <article id="printDocument">
+        <section class="sheet sheet-main">
+          <div class="brand"><img src="assets/logo-zone-kempen.png" alt="Logo Brandweer Zone Kempen"></div>
+          <h1>Infofiche</h1>
+          <dl class="summary-table">
+            <div><dt>Naam activiteit</dt><dd data-output="activityName"></dd></div>
+            <div><dt>Aard activiteit</dt><dd data-output="activityType"></dd></div>
+            <div><dt>Locatie activiteit</dt><dd data-output="activityLocation"></dd></div>
+            <div><dt>Aanvang</dt><dd data-output="start"></dd></div>
+            <div><dt>Einde</dt><dd data-output="end"></dd></div>
+            <div><dt>Aan</dt><dd data-output="to"></dd></div>
+          </dl>
+          <div id="detailSections" class="detail-sections"></div>
+          <footer class="document-footer">
+            <img src="assets/footer-accent.png" alt="">
+            <div><strong>Brandweer Zone Kempen</strong><span id="footerMeta"></span></div>
+          </footer>
+        </section>
+
+        <section id="attachmentSheet" class="sheet sheet-attachments hidden">
+          <div class="brand"><img src="assets/logo-zone-kempen.png" alt="Logo Brandweer Zone Kempen"></div>
+          <h1>Kaarten en foto's</h1>
+          <div id="imagePreview" class="image-preview"></div>
+          <footer class="document-footer">
+            <img src="assets/footer-accent.png" alt="">
+            <div><strong>Brandweer Zone Kempen</strong><span>Bijlage bij infofiche</span></div>
+          </footer>
+        </section>
+      </article>
+    </section>
+  </main>
+
+  <div id="toast" class="toast no-print" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
