@@ -9,6 +9,7 @@ Een volledig statische webapp om operationele infofiches op te maken, lokaal te 
 - optionele liggende bijlage met maximaal vier kaarten of foto's;
 - automatisch lokaal opslaan in de browser;
 - afdrukken en bewaren als PDF via het afdrukvenster;
+- locatie rechtstreeks openen in Google Maps en een kaartafdruk toevoegen;
 - geschikt voor GitHub Pages.
 
 ## Publiceren op GitHub Pages
@@ -22,7 +23,17 @@ Een volledig statische webapp om operationele infofiches op te maken, lokaal te 
 
 ## PDF maken
 
-Klik in de app op **Afdrukken / PDF**. Kies in het afdrukvenster **Opslaan als PDF**. Zet indien beschikbaar **Achtergrondafbeeldingen** aan en marges op **Geen** of **Standaard**.
+Klik in de app op **PDF maken / afdrukken**. Kies in het afdrukvenster als printer **Opslaan als PDF** of **Microsoft Print to PDF**. Zet indien beschikbaar **Achtergrondafbeeldingen** aan en marges op **Geen**. De afdrukweergave is ook geschikt voor kleinere browservensters.
+
+## Google Maps-kaart toevoegen
+
+1. Vul bij **Locatie activiteit** een volledig adres in.
+2. Klik op **Open locatie in Google Maps**.
+3. Stel in Google Maps de gewenste kaart, route of satellietweergave in.
+4. Maak met het Knipprogramma van Windows een schermafbeelding.
+5. Klik in de app op **Voeg kaartafdruk toe** en selecteer die afbeelding.
+
+De kaart verschijnt op een afzonderlijke liggende bijlagepagina. Een automatische Google Maps-afbeelding zonder tussenstap is niet opgenomen, omdat de officiële Static Maps-dienst een API-sleutel met facturatie vereist.
 
 ## Privacy
 

@@ -59,7 +59,24 @@ document.querySelector('#imageInput').addEventListener('change', async event => 
   for(const file of files) images.push({src:await resizeImage(file),caption:file.name.replace(/\.[^.]+$/,'')});
   event.target.value=''; render(); save();
 });
-document.querySelector('#printButton').addEventListener('click',()=>window.print());
+document.querySelector('#mapImageInput').addEventListener('change', async event => {
+  const file=event.target.files[0]; if(!file) return;
+  const existing=images.findIndex(item=>item.isMap);
+  const map={src:await resizeImage(file),caption:'Kaart locatie / aanrijroute',isMap:true};
+  if(existing>=0) images[existing]=map;
+  else if(images.length<4) images.unshift(map);
+  else return showToast('Verwijder eerst een andere afbeelding.');
+  event.target.value=''; render(); save(); showToast('Kaartafdruk toegevoegd.');
+});
+document.querySelector('#mapsButton').addEventListener('click',()=>{
+  const address=document.querySelector('[name=activityLocation]').value.trim();
+  if(!address) return showToast('Vul eerst de locatie van de activiteit in.');
+  window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,'_blank','noopener');
+});
+document.querySelector('#printButton').addEventListener('click',()=>{
+  render();
+  setTimeout(()=>window.print(),100);
+});
 document.querySelector('#clearButton').addEventListener('click',()=>{
   if(!confirm('Alle ingevulde gegevens wissen en een nieuwe fiche starten?')) return;
   document.querySelector('#infoForm').reset(); images=[]; localStorage.removeItem(STORAGE_KEY); render(); showToast('Nieuwe fiche gestart.');

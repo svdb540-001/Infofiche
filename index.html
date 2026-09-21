@@ -16,7 +16,7 @@
     </div>
     <div class="header-actions">
       <button id="clearButton" class="button button-secondary" type="button">Nieuwe fiche</button>
-      <button id="printButton" class="button button-primary" type="button">Afdrukken / PDF</button>
+      <button id="printButton" class="button button-primary" type="button">PDF maken / afdrukken</button>
     </div>
   </header>
 
@@ -27,7 +27,12 @@
         <div class="field-grid">
           <label>Naam activiteit<input name="activityName" placeholder="Bijv. Paardenkoers Geel"></label>
           <label>Aard activiteit<input name="activityType" placeholder="Bijv. sportevenement"></label>
-          <label class="wide">Locatie activiteit<input name="activityLocation" placeholder="Adres en/of terrein"></label>
+          <label class="wide">Locatie activiteit<input name="activityLocation" placeholder="Straat, huisnummer, postcode en gemeente"></label>
+          <div class="wide map-tools">
+            <button id="mapsButton" class="button button-map" type="button">Open locatie in Google Maps</button>
+            <label class="button button-secondary file-button">Voeg kaartafdruk toe<input id="mapImageInput" type="file" accept="image/*"></label>
+          </div>
+          <p class="wide map-help">Google Maps opent met het ingevulde adres. Maak daar eventueel een schermafbeelding en voeg die hier toe; ze verschijnt automatisch op de bijlagepagina.</p>
           <label>Aanvang<input name="start" type="datetime-local"></label>
           <label>Einde<input name="end" type="datetime-local"></label>
           <label class="wide">Aan<input name="to" placeholder="Ontvanger(s) of dienst"></label>
@@ -68,7 +73,7 @@
       <div class="preview-label no-print">Afdrukvoorbeeld</div>
       <article id="printDocument">
         <section class="sheet sheet-main">
-          <div class="brand"><img src="assets/logo-zone-kempen.png" alt="Logo Brandweer Zone Kempen"></div>
+          <div class="brand"><img src="logo-zone-kempen.png" alt="Logo Brandweer Zone Kempen"></div>
           <h1>Infofiche</h1>
           <dl class="summary-table">
             <div><dt>Naam activiteit</dt><dd data-output="activityName"></dd></div>
@@ -86,7 +91,7 @@
         </section>
 
         <section id="attachmentSheet" class="sheet sheet-attachments hidden">
-          <div class="brand"><img src="assets/logo-zone-kempen.png" alt="Logo Brandweer Zone Kempen"></div>
+          <div class="brand"><img src="logo-zone-kempen.png" alt="Logo Brandweer Zone Kempen"></div>
           <h1>Kaarten en foto's</h1>
           <div id="imagePreview" class="image-preview"></div>
           <footer class="document-footer">
